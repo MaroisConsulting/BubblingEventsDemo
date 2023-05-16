@@ -1,0 +1,35 @@
+﻿<Window x:Class="BubblingEventsDemo.UI.MainWindowView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BubblingEventsDemo.UI"
+        xmlns:ctrls="clr-namespace:BubblingEventsDemo;assembly=BubblingEventsDemo"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        Height="450" 
+        Width="800">
+    
+    <Grid>
+
+        <ctrls:OuterControl Background="Tan"
+                            Height="225"
+                            Width="300">
+
+            <!--
+                HERE I WANT TO TRAP THE INNER CONTROL'S ButtonClicked EVENT
+                BUT HOW DO YOU REFERENCE THE INNTER CONTROL HERE?
+            -->
+            <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="ButtonClickedCommand">
+                    <i:InvokeCommandAction Command="{Binding ButtonClickedCommand, 
+                                                            RelativeSource={RelativeSource TemplatedParent}}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            
+        </ctrls:OuterControl>
+
+    </Grid>
+    
+</Window>
